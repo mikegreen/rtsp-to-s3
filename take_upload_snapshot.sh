@@ -23,3 +23,5 @@ ffmpeg -y -i $CamAddress -vframes 1 $FileName
 # upload to S3
 aws --profile=pnp s3 cp $FileName s3://$S3Bucket/$S3YearMonth/
 
+# remove file
+rm $FileName
