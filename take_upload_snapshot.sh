@@ -18,7 +18,8 @@ S3YearMonth="$(date +"%Y-%m")"
 
 # take snapshot
 echo "Take ffmpeg snapshot from $CamAddress and save to $FileName"
-ffmpeg -err_detect aggressive -fflags discardcorrupt  -y -i $CamAddress -vframes 1 $FileName
+# echo ffmpeg -err_detect aggressive -fflags discardcorrupt -y -rtsp_transport tcp -i $CamAddress -vframes 1 $FileName
+ffmpeg -err_detect aggressive -fflags discardcorrupt -y -rtsp_transport tcp -i $CamAddress -vframes 1 $FileName
 
 # upload to S3
 aws --profile=pnp s3 cp $FileName s3://$S3Bucket/$S3YearMonth/
